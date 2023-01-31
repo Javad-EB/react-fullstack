@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 
-const requireAuth = async (req, res, next) => {
+const requiresAuth = async (req, res, next) => {
     const token = req.cookies["access-token"]
     let isAuthed = false
 
@@ -34,4 +34,4 @@ const requireAuth = async (req, res, next) => {
     }
 }
 
-module.exports = requireAuth
+module.exports = requiresAuth
