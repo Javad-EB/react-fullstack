@@ -71,6 +71,12 @@ textarea {
   border-radius: 5px;
   font-size: 1rem;
   transition: all 0.2s ease;
+  text-decoration: none;
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 
   &:hover {
     background-color: $primary-dark;
@@ -115,31 +121,51 @@ textarea {
       border: none;
       border-radius: 5px;
       color: $white;
+      font-size: 1.25rem;
 
       &:focus {
-        outline: none;;
+        outline: none;
       }
     }
   }
 
-  &__footer{
-    .btn{
+  &__footer {
+    .btn {
       width: 100%;
     }
 
-    .auth__error{
+    .auth__error {
       margin-bottom: 1rem;
       text-align: center;
       font-size: 1.25rem;
     }
   }
 
-  &__error{
+  &__error {
     font-size: 1rem;
     margin-top: 10px;
     color: $red;
   }
 
+  &__register {
+    text-align: center;
+    margin-top: 20px;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: $white;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+
+      &:hover{
+        opacity: 0.7;
+      }
+}
+  }
 }
 
 .loading {
