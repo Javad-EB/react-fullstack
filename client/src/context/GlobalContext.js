@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react'
 import axios from 'axios'
+import { Types } from 'mongoose'
 
 // initial state
 const InitialState = {
@@ -84,10 +85,19 @@ export const GlobalProvider = (props) => {
             dispatch({ type: "RESET_USER" })
         }
     }
+
+    const addToDo = (toDo) => {
+        dispatch({
+            type: "SET_INCOMPLETE_TODOS",
+            payload: [toDo, ...state.incompleteToDos]
+        })
+    }
+
     const value = {
         ...state,
         getCurrentUser,
         logout,
+        addToDo,
     }
     return (
         <GlobalContext.Provider value={value}>
