@@ -2,10 +2,18 @@ require("dotenv").config()
 const express = require("express")
 const mongoose = require("mongoose")
 const cookieParser = require("cookie-parser")
+const path = reqire('path')
+
 
 //import routes
 const authRoute = require("./routes/auth")
 const ToDosRoute = require("./routes/todos")
+
+app.use(express.static(path.resolve(__dirname, './client/build')))
+
+app.get("*", (res, req) => {
+    res.sendFile(path.resolve(__dirname, './client/build', "index.html"))
+})
 
 
 const app = express()
@@ -32,8 +40,8 @@ mongoose.connect(process.env.MONGO_URI)
             console.log(`Server running on port ${process.env.PORT}`)
         })
     })
-.catch((error) => {
-    console.log(error)
-})
+    .catch((error) => {
+        console.log(error)
+    })
 
 
