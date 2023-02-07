@@ -2,7 +2,7 @@ require("dotenv").config()
 const express = require("express")
 const mongoose = require("mongoose")
 const cookieParser = require("cookie-parser")
-const path = reqire('path')
+const path = require("path")
 
 
 //import routes
