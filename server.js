@@ -9,10 +9,10 @@ const path = require("path")
 const authRoute = require("./routes/auth")
 const ToDosRoute = require("./routes/todos")
 
-app.use(express.static(path.resolve(__dirname, './client/build')))
+app.use(express.static(path.resolve(__dirname, "./client/build")))
 
-app.get("*", (res, req) => {
-    res.sendFile(path.resolve(__dirname, './client/build', "index.html"))
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./client/build", "index.html"))
 })
 
 
