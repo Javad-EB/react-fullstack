@@ -8,14 +8,6 @@ const path = require("path")
 //import routes
 const authRoute = require("./routes/auth")
 const ToDosRoute = require("./routes/todos")
-
-app.use(express.static(path.resolve(__dirname, "./client/build")))
-
-app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./client/build", "index.html"))
-})
-
-
 const app = express()
 
 app.use(express.json())
@@ -27,10 +19,14 @@ app.get("/api", (req, res) => {
     res.send("Fullstack React Course Express Server")
 })
 
-
-
 app.use("/api/auth", authRoute)
 app.use("/api/todos", ToDosRoute)
+
+app.use(express.static(path.resolve(__dirname, "./client/build")))
+
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./client/build", "index.html"))
+})
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
